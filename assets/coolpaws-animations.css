@@ -1,0 +1,225 @@
+/* =============================================
+   CoolPaws Co. — Custom Animations & Styles
+   ============================================= */
+
+:root {
+  --cp-blue: #4fc3f7;
+  --cp-teal: #26c6da;
+  --cp-orange: #ff8a65;
+  --cp-green: #66bb6a;
+  --cp-dark: #1a2634;
+  --cp-radius: 16px;
+}
+
+/* ---------- Fade-in on scroll ---------- */
+.cp-fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.cp-fade-up.cp-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cp-fade-up:nth-child(2) { transition-delay: 0.1s; }
+.cp-fade-up:nth-child(3) { transition-delay: 0.2s; }
+.cp-fade-up:nth-child(4) { transition-delay: 0.3s; }
+
+/* ---------- Hero Section ---------- */
+.cp-hero {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0d2137 0%, #1a4a6b 50%, #0a7fa8 100%);
+  border-radius: var(--cp-radius);
+  margin: 20px 0;
+}
+
+.cp-hero__bg-circles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.cp-hero__circle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.15;
+  animation: cp-float 6s ease-in-out infinite;
+}
+
+.cp-hero__circle--1 {
+  width: 400px; height: 400px;
+  background: var(--cp-blue);
+  top: -100px; right: -100px;
+  animation-delay: 0s;
+}
+
+.cp-hero__circle--2 {
+  width: 250px; height: 250px;
+  background: var(--cp-teal);
+  bottom: -50px; left: -50px;
+  animation-delay: 2s;
+}
+
+.cp-hero__circle--3 {
+  width: 150px; height: 150px;
+  background: var(--cp-orange);
+  top: 50%; left: 30%;
+  animation-delay: 4s;
+}
+
+@keyframes cp-float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50%       { transform: translateY(-20px) scale(1.05); }
+}
+
+.cp-hero__content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 40px 20px;
+  max-width: 700px;
+}
+
+.cp-hero__badge {
+  display: inline-block;
+  background: rgba(79, 195, 247, 0.2);
+  border: 1px solid var(--cp-blue);
+  color: var(--cp-blue);
+  padding: 6px 18px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  animation: cp-pulse-border 2s ease-in-out infinite;
+}
+
+@keyframes cp-pulse-border {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(79,195,247,0.4); }
+  50%       { box-shadow: 0 0 0 8px rgba(79,195,247,0); }
+}
+
+.cp-hero__title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.15;
+  margin: 0 0 16px;
+  animation: cp-title-in 1s ease both;
+}
+
+.cp-hero__title span {
+  color: var(--cp-blue);
+}
+
+@keyframes cp-title-in {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.cp-hero__subtitle {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.75);
+  margin: 0 0 32px;
+  animation: cp-title-in 1s 0.2s ease both;
+}
+
+.cp-hero__cta {
+  display: inline-block;
+  padding: 16px 40px;
+  background: linear-gradient(90deg, var(--cp-blue), var(--cp-teal));
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow: 0 8px 30px rgba(79,195,247,0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+  animation: cp-title-in 1s 0.4s ease both;
+}
+
+.cp-hero__cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 40px rgba(79,195,247,0.6);
+  color: #fff;
+}
+
+/* ---------- Features Grid ---------- */
+.cp-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  margin: 60px 0;
+}
+
+.cp-feature-card {
+  background: #f0f9ff;
+  border-radius: var(--cp-radius);
+  padding: 32px 24px;
+  text-align: center;
+  border: 1px solid #e0f4ff;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.cp-feature-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(79,195,247,0.15);
+}
+
+.cp-feature-card__icon {
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.cp-feature-card__title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--cp-dark);
+  margin: 0 0 8px;
+}
+
+.cp-feature-card__text {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+}
+
+/* ---------- Product card hover glow ---------- */
+.card-wrapper:hover .card__media img,
+.card-wrapper:hover .card__media {
+  transform: scale(1.04);
+  transition: transform 0.4s ease;
+}
+
+.card__media {
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.card-wrapper {
+  transition: box-shadow 0.3s;
+}
+
+.card-wrapper:hover {
+  box-shadow: 0 12px 40px rgba(79,195,247,0.18);
+}
+
+/* ---------- Paw print floating decoration ---------- */
+.cp-paw-float {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  font-size: 2rem;
+  animation: cp-float 3s ease-in-out infinite;
+  z-index: 100;
+  cursor: default;
+  user-select: none;
+}
